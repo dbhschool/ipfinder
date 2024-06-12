@@ -1,5 +1,4 @@
 import Content from "@/components/Content";
-import Map from "@/components/Map";
 import React, { useEffect } from "react";
 
 const MainPage = async () => {

@@ -6,26 +6,49 @@ import CardContent from "./CardContent";
 
 const Content = ({ deviceIp }: { deviceIp: string }) => {
   console.log(deviceIp);
-  const [IpData, setIpData] = useState<any>();
+  const [ipData, setIpData] = useState<any>();
   const [isLoading, setIsLoading] = useState(false);
-  console.log(IpData);
+
   useEffect(() => {
     const getCurrentUserData = async () => {
       setIsLoading(true);
-      const res = await fetch(
-        `https://geo.ipify.org/api/v2/country,city?apiKey=${process.env.NEXT_PUBLIC_IPFY_API_KEY}&ipAddress=${deviceIp}`
-      );
-      const data = await res.json();
-      setIpData(data);
+      const res = await fetch(`https://ipapi.co/${deviceIp}/json/`);
+
+      setIpData(res);
       setIsLoading(false);
     };
     getCurrentUserData();
   }, []);
 
+  console.log(ipData);
+  //   useEffect(() => {
+  //     const Data = {
+  //       ip: "103.118.77.125",
+  //       location: {
+  //         country: "BD",
+  //         region: "Rājshāhi Division",
+  //         city: "Faridpur U",
+  //         lat: 24.15833,
+  //         lng: 89.45333,
+  //         postalCode: "",
+  //         timezone: "+06:00",
+  //         geonameId: 10376568,
+  //       },
+  //       as: {
+  //         asn: 137959,
+  //         name: "VTL-AS-AP",
+  //         route: "103.118.77.0/24",
+  //         domain: "http://www.visiontechnologiesltd.com/",
+  //         type: "Cable/DSL/ISP",
+  //       },
+  //       isp: "VTL Network",
+  //     };
+  //     setIpData(Data);
+  //   }, []);
+
   if (isLoading) {
     return <span>Loading...</span>;
   }
-
   return (
     <section className="flex h-full">
       {/* left  */}
@@ -36,11 +59,11 @@ const Content = ({ deviceIp }: { deviceIp: string }) => {
         {/* inputForm  */}
         <InputForm setIpData={setIpData} />
         {/* cardContent */}
-        {IpData && <CardContent IpData={IpData} />}
+        {ipData && <CardContent ipData={ipData} />}
       </div>
       {/* right */}
       <div className="flex-1 p-4 my-8 h-full">
-        {IpData && <Map location={IpData.location} />}
+        {ipData && <Map location={ipData} />}
       </div>
     </section>
   );

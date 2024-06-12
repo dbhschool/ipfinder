@@ -1,14 +1,25 @@
 import React from "react";
 
-const CardContent = ({ IpData }) => {
+const CardContent = ({ ipData }) => {
+  console.log(ipData);
   return (
-    <div className="p-4 ring-1 ring-orange-400/30 my-4 rounded-md">
-      CardContent
-      <div>
-        <span>Ip: {IpData.ip}</span>
-        <span>Country: {IpData.location.country} </span>
-        <span>region: {IpData.location.region} </span>
-        <span>city: {IpData.location.city} </span>
+    <div className=" ring-1 ring-orange-400/30 my-4 rounded-md h-[50%] overflow-hidden">
+      <div className="h-12 w-full bg-orange-500 flex items-center p-4 text-white font-semibold">
+        Ip Address Details
+      </div>
+      <div className="flex gap-4 flex-col p-4 ">
+        <div>
+          <span>Ip: {ipData.ip}</span>
+        </div>
+        <div>
+          <span>Country: {ipData.country_name} </span>
+        </div>
+        <div>
+          <span>Region: {ipData.region} </span>
+        </div>
+        <div>
+          <span>ISP: {ipData.org} </span>
+        </div>
       </div>
     </div>
   );

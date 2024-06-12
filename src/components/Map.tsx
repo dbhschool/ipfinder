@@ -21,7 +21,7 @@ const Map = ({ location }: locationType) => {
   const position = [location.lat, location.lng];
 
   return (
-    <div className="bg-red-300 w-full h-full ">
+    <div className="bg-red-300 w-full h-[80%]">
       <MapContainer
         center={position}
         zoom={13}

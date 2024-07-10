@@ -13,14 +13,13 @@ const Content = ({ deviceIp }: { deviceIp: string }) => {
     const getCurrentUserData = async () => {
       setIsLoading(true);
       const res = await fetch(`https://ipapi.co/${deviceIp}/json/`);
-
-      setIpData(res);
+      const data = await res.json();
+      setIpData(data);
       setIsLoading(false);
     };
     getCurrentUserData();
   }, []);
 
-  console.log(ipData);
   //   useEffect(() => {
   //     const Data = {
   //       ip: "103.118.77.125",

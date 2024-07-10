@@ -10,18 +10,20 @@ export type locationType = {
     country: string;
     region: string;
     city: string;
-    lat: number;
-    lng: number;
+    latitude: number;
+    longitude: number;
     postalCode: string;
     timezone: string;
     geonameId: number;
   };
 };
 const Map = ({ location }: locationType) => {
-  const position = [location.lat, location.lng];
-
+  console.log(location);
+  // const position = [location.latitude, location.longitude];
+  const position = [51.505, -0.09];
+  console.log(position);
   return (
-    <div className="bg-red-300 w-full h-[80%]">
+    <div className=" w-full h-[80%]">
       <MapContainer
         center={position}
         zoom={13}
